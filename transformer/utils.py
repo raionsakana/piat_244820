@@ -80,7 +80,7 @@ class TextGenerator:
         self.__generate(prompt=prompt, length=length)
 
     def __generate(self, prompt, length):
-        tokens = [self.__w2i[word] for word in prompt.split()]
+        tokens = [self.__w2i[word] for word in TextGenerator.remove_punctuation(prompt).split()]
         num_tokens_generated, tokens_generated = 0, []
 
         while num_tokens_generated <= length:
@@ -127,3 +127,8 @@ class TextGenerator:
 
         arr = sorted(arr)[::-1][-top_n - 1:]
         return random.choice(indices, p=[exp(v) / sum(exp(arr)) for v in arr])
+
+    @staticmethod
+    def remove_punctuation(input_string):
+        from string import punctuation
+        return input_string.translate(str.maketrans('', '', punctuation))

@@ -13,5 +13,6 @@ while True:
             raise ValueError()
 
         text_generator.generate_story(prompt=prompt, length=int(length))
+        print('\n')
     except ValueError:
         print('Podane wartości są nieprawidłowe. Spróbuj jeszcze raz.\n\n')

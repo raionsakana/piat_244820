@@ -10,4 +10,4 @@ COPY bajki.txt bajki.txt
 COPY utils.py utils.py
 COPY app.py app.py
 
-ENTRYPOINT ["top", "-b"]
+CMD python app.py
